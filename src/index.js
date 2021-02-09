@@ -14,15 +14,17 @@ const github = require('@actions/github');
       .actions
       .getWorkflowRun({ owner, repo, run_id });
 
-    core.debug(JSON.stringify(run, null, 2));
+    const { created_at, updated_at } = run.data;
 
     core.debug(JSON.stringify({
       owner,
       repo,
       run_id,
+      created_at,
+      updated_at,
     }, null, 2));
 
-    const isFirstRun = run.created_at === run.updated_at;
+    const isFirstRun = created_at === updated_at;
     core.setOutput('is-first-run', isFirstRun);
 
     const failFast = core.getInput('fail-fast', { required: false });
