@@ -5,6 +5,8 @@ const github = require('@actions/github');
   try {
     const token = core.getInput('token', { required: true });
 
+    core.debug(JSON.stringify(github, null, 2));
+
     const owner = github.repository_owner;
     const [, repo] = github.repository.split('/');
     const { run_id } = github;
