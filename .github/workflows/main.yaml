@@ -1,0 +1,14 @@
+'on': push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: first
+        uses: ./
+
+      - run: test "$IS_FIRST_RUN" = "true"
+        env:
+          IS_FIRST_RUN: ${{ steps.first.outputs.is-first-run }}
