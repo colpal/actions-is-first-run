@@ -1,0 +1,18 @@
+---
+name: Is First Run
+description: Determine if the current workflow run is the first run or a re-run
+inputs:
+  token:
+    description: Token for GitHub access
+    required: false
+    default: ${{ github.token }}
+  fail-fast:
+    description: Fail immediately if this is a re-run
+    required: false
+    default: false
+outputs:
+  is-first-run:
+    description: A boolean representing if the current run is the first run
+runs:
+  using: node12
+  main: dist/main.js
