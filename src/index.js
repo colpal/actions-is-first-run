@@ -6,7 +6,7 @@ const github = require('@actions/github');
     const token = core.getInput('token', { required: true });
 
     const owner = github.repository_owner;
-    const repo = github.event.repository.name;
+    const [, repo] = github.repository.split('/');
     const { run_id } = github;
 
     const { created_at, updated_at } = await github
