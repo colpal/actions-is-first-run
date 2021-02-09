@@ -9,20 +9,20 @@ const github = require('@actions/github');
     const repo = github.context.payload.repository.name;
     const run_id = github.context.runId;
 
-    const { created_at, updated_at } = await github
+    const run = await github
       .getOctokit(token)
       .actions
       .getWorkflowRun({ owner, repo, run_id });
+
+    core.debug(JSON.stringify(run, null, 2));
 
     core.debug(JSON.stringify({
       owner,
       repo,
       run_id,
-      created_at,
-      updated_at,
     }, null, 2));
 
-    const isFirstRun = created_at === updated_at;
+    const isFirstRun = run.created_at === run.updated_at;
     core.setOutput('is-first-run', isFirstRun);
 
     const failFast = core.getInput('fail-fast', { required: false });
