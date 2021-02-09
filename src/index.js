@@ -7,9 +7,9 @@ const github = require('@actions/github');
 
     core.debug(JSON.stringify(github, null, 2));
 
-    const owner = github.context.owner.name;
-    const repo = github.context.repository.name;
-    const { run_id } = github;
+    const owner = github.context.payload.repository.owner.name;
+    const repo = github.context.payload.repository.name;
+    const run_id = github.context.runId;
 
     const { created_at, updated_at } = await github
       .getOctokit(token)
