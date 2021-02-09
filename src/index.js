@@ -7,8 +7,8 @@ const github = require('@actions/github');
 
     core.debug(JSON.stringify(github, null, 2));
 
-    const owner = github.repository_owner;
-    const [, repo] = github.repository.split('/');
+    const owner = github.context.owner.name;
+    const repo = github.context.repository.name;
     const { run_id } = github;
 
     const { created_at, updated_at } = await github
