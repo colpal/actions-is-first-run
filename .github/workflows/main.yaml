@@ -13,9 +13,6 @@ jobs:
 
       - run: sleep ${{ matrix.sleep }}
 
-      - id: is-first
-        uses: ./
-
-      - run: test "$IS_FIRST_RUN" = "true"
-        env:
-          IS_FIRST_RUN: ${{ steps.is-first.outputs.is-first-run }}
+      - uses: ./
+        with:
+          fail-fast: true
