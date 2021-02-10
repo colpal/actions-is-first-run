@@ -3,12 +3,15 @@
 jobs:
   main:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sleep: [10, 11, 12, 13]
     steps:
       - uses: actions/checkout@v2
 
       - uses: ./
 
-      - run: sleep 5
+      - run: sleep ${{ matrix.sleep }}
 
       - id: is-first
         uses: ./
