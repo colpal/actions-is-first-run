@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+const { areTimestampsClose } = require('./lib');
+
 (async () => {
   try {
     const token = core.getInput('token', { required: true });
@@ -24,7 +26,7 @@ const github = require('@actions/github');
       updated_at,
     }, null, 2));
 
-    const isFirstRun = created_at === updated_at;
+    const isFirstRun = areTimestampsClose(created_at, updated_at, '1m');
     core.setOutput('is-first-run', isFirstRun);
 
     const failFast = core.getInput('fail-fast', { required: false });
