@@ -1,3 +1,5 @@
+const assert = require('assert');
+
 exports.toMilliseconds = (string) => {
   const minutesRegex = /^\s*(\d+)m\s*$/;
   const minuteMatch = string.match(minutesRegex);
@@ -5,5 +7,5 @@ exports.toMilliseconds = (string) => {
     const [, minutes] = minuteMatch;
     return parseInt(minutes, 10) * 1000;
   }
-  throw new Error(`"${string}" is not a valid duration string.`);
+  assert.fail(`"${string}" is not a valid duration string.`);
 };
