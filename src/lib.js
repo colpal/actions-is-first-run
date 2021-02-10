@@ -7,5 +7,5 @@ exports.toMilliseconds = (string) => {
     const [, minutes] = minuteMatch;
     return parseInt(minutes, 10) * 1000;
   }
-  assert.fail(`"${string}" is not a valid duration string.`);
+  return assert.fail(`"${string}" is not a valid duration string.`);
 };
