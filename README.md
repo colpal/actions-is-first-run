@@ -9,12 +9,15 @@ if it is a re-run. It also provides an option to fail immediately if it is not t
 - uses: colpal/actions-is-first-run@v1
   with:
     # If set to "true", will mark the workflow as failed if the run is a re-run.
-    fail-fast: false
+    # Default: false
+    fail-fast: ''
 
     # The token to use to authenticate to the GitHub API
-    token: ${{ github.token }}
+    # Default: ${{ github.token }}
+    token: ''
 
     # The amount of time that must past since the initial workflow run for subsequent runs to be
     # considered re-runs.
-    threshold: 1m
+    # Default: 1m
+    threshold: ''
 ```
