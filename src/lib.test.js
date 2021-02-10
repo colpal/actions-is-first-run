@@ -1,11 +1,11 @@
-const { toMilliseconds } = require('./lib');
+const { areTimestampsClose, toMilliseconds } = require('./lib');
 
 test('should convert minute format to milliseconds', () => {
   Array(100)
     .fill()
     .forEach(() => {
       const random = Math.floor(Math.random() * 480);
-      const expected = random * 1000;
+      const expected = random * 60 * 1000;
       const actual = toMilliseconds(`${random}m`);
       expect(actual).toBe(expected);
     });
