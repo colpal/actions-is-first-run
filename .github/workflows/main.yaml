@@ -6,9 +6,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - id: first
+      - uses: ./
+
+      - run: sleep 5
+
+      - id: is-first
         uses: ./
 
       - run: test "$IS_FIRST_RUN" = "true"
         env:
-          IS_FIRST_RUN: ${{ steps.first.outputs.is-first-run }}
+          IS_FIRST_RUN: ${{ steps.is-first.outputs.is-first-run }}
