@@ -5,5 +5,5 @@ exports.toMilliseconds = (string) => {
     const [, minutes] = minuteMatch;
     return parseInt(minutes, 10) * 1000;
   }
-  return null;
+  throw new Error(`"${string}" is not a valid duration string.`);
 };

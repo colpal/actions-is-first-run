@@ -12,6 +12,7 @@ test('should convert minute format to milliseconds', () => {
 });
 
 test('should fail to convert minutes to milliseconds', () => {
-  expect(toMilliseconds('-1m')).toBeNull();
-  expect(toMilliseconds('2')).toBeNull();
+  ['-1m', '2'].forEach((s) => {
+    expect(() => toMilliseconds(s)).toThrow(s);
+  });
 });
