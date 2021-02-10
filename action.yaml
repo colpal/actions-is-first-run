@@ -10,6 +10,10 @@ inputs:
     description: Fail immediately if this is a re-run
     required: false
     default: false
+  threshold:
+    description: Maximum allowed time between run creation and modification timestamps
+    required: false
+    default: 1m
 outputs:
   is-first-run:
     description: A boolean representing if the current run is the first run

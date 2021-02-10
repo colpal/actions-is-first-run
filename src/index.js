@@ -26,7 +26,8 @@ const { areTimestampsClose } = require('./lib');
       updated_at,
     }, null, 2));
 
-    const isFirstRun = areTimestampsClose(created_at, updated_at, '1m');
+    const threshold = core.getInput('threshold', { required: true });
+    const isFirstRun = areTimestampsClose(created_at, updated_at, threshold);
     core.setOutput('is-first-run', isFirstRun);
 
     const failFast = core.getInput('fail-fast', { required: false });
