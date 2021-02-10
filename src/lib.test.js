@@ -16,3 +16,22 @@ test('should fail to convert minutes to milliseconds', () => {
     expect(() => toMilliseconds(s)).toThrow(s);
   });
 });
+
+test('should determine timestamps are close enough', () => {
+  [
+    ['2021-02-10T16:30:00Z', '2021-02-10T16:30:30Z', '1m'],
+    ['2021-02-10T16:30:00Z', '2021-02-10T16:34:00Z', '5m'],
+    ['2021-02-10T16:30:00Z', '2021-02-10T16:35:00Z', '5m'],
+  ].forEach((parameters) => {
+    expect(areTimestampsClose(...parameters)).toBeTruthy();
+  });
+});
+
+test('should determine timestamps are not close enough', () => {
+  [
+    ['2021-02-10T16:30:00Z', '2021-02-10T16:35:00Z', '4m'],
+    ['2021-02-10T16:30:00Z', '2021-02-10T16:30:01Z', '0m'],
+  ].forEach((parameters) => {
+    expect(areTimestampsClose(...parameters)).toBeFalsy();
+  });
+});
