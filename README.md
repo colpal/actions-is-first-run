@@ -22,7 +22,7 @@ if it is a re-run. It also provides an option to fail immediately if it is not t
     threshold: ''
 ```
 
-## Example
+## Examples
 
 ```yaml
 'on': push
@@ -39,4 +39,22 @@ jobs:
       - uses: actions/checkout@v2
 
       # ...
+```
+
+```yaml
+'on': push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: first
+        uses: colpal/actions-is-first-run@v1
+
+      # ...
+
+      - if: steps.first.output.is-first-run
+        run: ./script-that-should-not-run-on-reruns.sh
 ```
