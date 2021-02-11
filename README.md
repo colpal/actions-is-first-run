@@ -24,6 +24,8 @@ if it is a re-run. It also provides an option to fail immediately if it is not t
 
 ## Examples
 
+### Fail Fast
+
 ```yaml
 'on': push
 
@@ -40,6 +42,8 @@ jobs:
 
       # ...
 ```
+
+### Conditional Steps
 
 ```yaml
 'on': push
