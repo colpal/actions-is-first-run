@@ -59,6 +59,6 @@ jobs:
 
       # ...
 
-      - if: steps.first.output.is-first-run
+      - if: steps.first.outputs.is-first-run
         run: ./script-that-should-not-run-on-reruns.sh
 ```
