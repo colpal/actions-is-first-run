@@ -62,3 +62,24 @@ jobs:
       - if: steps.first.outputs.is-first-run
         run: ./script-that-should-not-run-on-reruns.sh
 ```
+
+### Allow Re-runs for a Limited Time
+
+```yaml
+'on': push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      # Allow re-runs for up to 2 hours after the first run starts
+      - uses: colpal/actions-is-first-run@v1
+        with:
+          threshold: 120m
+          fail-fast: true
+
+      # If we get this far, we know this run is up to 2 hours after the first
+      - uses: actions/checkout@v2
+
+      # ...
+```
