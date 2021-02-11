@@ -21,3 +21,22 @@ if it is a re-run. It also provides an option to fail immediately if it is not t
     # Default: 1m
     threshold: ''
 ```
+
+## Example
+
+```yaml
+'on': push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: colpal/actions-is-first-run@v1
+        with:
+          fail-fast: true
+
+      # If we get this far, we know this is the first run of the workflow
+      - uses: actions/checkout@v2
+
+      # ...
+```
