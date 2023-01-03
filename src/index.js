@@ -13,6 +13,7 @@ const { areTimestampsClose } = require('./lib');
 
     const run = await github
       .getOctokit(token)
+      .rest
       .actions
       .getWorkflowRun({ owner, repo, run_id });
 
