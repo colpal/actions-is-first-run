@@ -38,7 +38,7 @@ jobs:
           fail-fast: true
 
       # If we get this far, we know this is the first run of the workflow
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # ...
 ```
@@ -52,7 +52,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - id: first
         uses: colpal/actions-is-first-run@v1
@@ -79,7 +79,7 @@ jobs:
           fail-fast: true
 
       # If we get this far, we know this run is up to 2 hours after the first
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # ...
 ```
