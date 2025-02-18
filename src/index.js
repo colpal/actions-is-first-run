@@ -7,7 +7,7 @@ const { areTimestampsClose } = require('./lib');
   try {
     const token = core.getInput('token', { required: true });
 
-    const owner = github.context.payload.repository.owner.name;
+    const owner = github.context.payload.repository.owner.login;
     const repo = github.context.payload.repository.name;
     const run_id = github.context.runId;
 
