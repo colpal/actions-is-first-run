@@ -6,6 +6,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./
+      # The intent of the following steps is to have the workflow succeed only
+      # if it is a re-run. To do this, we must "flip" the action's normal
+      # outcomes (as it usually succeeds only if it is the first run). This
+      # should ensure that every pull request runs the workflow at least twice
+      # for testing purposes: the first run should fail, and the second should
+      # succeed
+      - id: action
+        uses: ./
         with:
           fail-fast: true
+        continue-on-error: true
+
+      - if: ${{ steps.action.outcome == 'success' }}
+        run: exit 1
+
+      - if: ${{ steps.action.outcome == 'failure' }}
+        run: exit 0
