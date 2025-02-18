@@ -14,12 +14,9 @@ jobs:
       # succeed
       - id: action
         uses: ./
-        with:
-          fail-fast: true
-        continue-on-error: true
 
-      - if: ${{ steps.action.outcome == 'success' }}
+      - if: ${{ steps.action.outputs.is-first-run == 'true' }}
         run: exit 1
 
-      - if: ${{ steps.action.outcome == 'failure' }}
+      - if: ${{ steps.action.outputs.is-first-run == 'false' }}
         run: exit 0
