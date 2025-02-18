@@ -11,6 +11,12 @@ const { areTimestampsClose } = require('./lib');
     const repo = github.context.payload.repository.name;
     const run_id = github.context.runId;
 
+    core.debug(JSON.stringify({
+      owner,
+      repo,
+      run_id,
+    }, null, 2));
+
     const run = await github
       .getOctokit(token)
       .rest
@@ -20,9 +26,6 @@ const { areTimestampsClose } = require('./lib');
     const { created_at, updated_at } = run.data;
 
     core.debug(JSON.stringify({
-      owner,
-      repo,
-      run_id,
       created_at,
       updated_at,
     }, null, 2));
