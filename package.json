@@ -5,7 +5,7 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "eslint": "^7.19.0",
+    "eslint": "^9.39.2",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^4.3.8",
