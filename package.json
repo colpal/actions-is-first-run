@@ -5,7 +5,7 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
+    "jest": "^30.2.0",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   },
