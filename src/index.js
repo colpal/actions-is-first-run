@@ -1,4 +1,4 @@
-const core = require('@actions/core');
+import * as core from '@actions/core';
 import * as github from '@actions/github';
 
 const { areTimestampsClose } = require('./lib');
