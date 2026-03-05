@@ -4,6 +4,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "esbuild": "0.27.3",
     "jest": "^30.2.0"
   },
   "dependencies": {
