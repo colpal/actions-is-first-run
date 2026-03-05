@@ -1,5 +1,5 @@
 {
-  "version": "1.0.12",
+  "version": "1.0.13",
   "scripts": {
     "build": "esbuild src/index.js --bundle --outfile=dist/main.js --platform=node --target=node20 --minify",
     "test": "jest"
